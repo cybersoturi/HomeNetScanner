@@ -1,6 +1,9 @@
 #!/bin/bash
+#home network scan
 
-#Basic network scan, which produces a list of IPs and MAC -addresses.
-#started by cybersoturi 3.12.2016
+#identify LAN ip and build ip space for scanning with ifconfig
+range=$(ifconfig|grep Bcast|cut -d":" -f3|cut -d" " -f1)
+end=/24
 
-nmap >> list.txt
+#finding hosts and MAC with NMAP ping scan and writing them to list
+nmap -sP $range$end | awk '/Nmap scan report for/{printf $5;}/MAC Address:/{print " "$3;}' | sort $ >> /foo/bar/result.list
