@@ -1,5 +1,6 @@
 #!/bin/bash
 #home network scan
+#version 1.0, 1.1.2017
 
 #identify LAN Broadcast IP
 LAN=$(ifconfig|grep Bcast|cut -d":" -f3|cut -d" " -f1)
