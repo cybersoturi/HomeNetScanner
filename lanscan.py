@@ -2,6 +2,6 @@
 
 #get the LAN ip
 
-#run nmap skan xxx.xxx.xxx.* to identify the ip and mac addresses
+#run nmap scan xxx.xxx.xxx.* to identify the ip and mac addresses
 
 #write results and time stamp to a list
