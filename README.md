@@ -6,6 +6,5 @@ Overall
 
 Installing
 
-apt-get install bc
 
 Guide
