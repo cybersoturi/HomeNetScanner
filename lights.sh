@@ -4,7 +4,7 @@
 #To set the lights in right mode, script call must contain a value
 #./lights.sh 0 for red and alarm, 2 for yellow and 3 for green
 
-#Set up all pins to output: red, yellow, green, audio
+#Set up all pins to output: red, yellow, green
 
 gpio mode 0 out
 gpio mode 2 out
