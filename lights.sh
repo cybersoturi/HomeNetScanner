@@ -1,5 +1,5 @@
 #!/bin/bash
-#lights, non tested version 0.0.0
+#lights, working (execpt audio) 0.1.0
 
 #To set the lights in right mode, script call must contain a value
 #./lights.sh 0 for red and alarm, 2 for yellow and 3 for green
