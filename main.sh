@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#starting scan, lights to yellow
+./lights.sh 2
+./
+
 #to run the main continuously, make changes to crontab as described in the readme
 
 #run the 
