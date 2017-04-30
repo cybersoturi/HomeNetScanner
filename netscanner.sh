@@ -1,9 +1,6 @@
 #!/bin/bash
-#home network scan version 1.0.3, 22.4.2017
+#home network scan version 1.0.4, 22.4.2017
 #identify host's LAN IPv4 address v 1.0.0
-
-#yellow light v 1.0.3
-./lights.sh 2
 
 LAN=$(ifconfig|grep Bcast|cut -d":" -f2|cut -d" " -f1)
 
@@ -25,6 +22,3 @@ ownIP=$(ifconfig|grep Bcast|cut -d":" -f2|cut -d" " -f1)
 ownMAC=$(ifconfig|grep HWaddr|cut -d" " -f11)
 
 sed -i 's/\b'"$ownIP"'\b/&'" $ownMAC"'/' /home/pi/result.list
-
-#green light v 1.0.3
-./lights.sh 3
