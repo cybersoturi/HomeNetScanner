@@ -1,9 +1,11 @@
 #!/bin/bash
 
-#starting scan, lights to yellow
-./lights.sh 2
-./netscanner.sh
-./compare.sh
+#setting defaut folder
+FOLDER="/home/pi"
+#starting scan, lights to yellow, scan
+$FOLDER/lights.sh 2
+$FOLDER/netscanner.sh
+
 
 
 
