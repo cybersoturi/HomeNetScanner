@@ -16,9 +16,9 @@ ARVO=${D2B[$MASK]} ARVO=$(echo $ARVO | cut -d"0" -f1 | wc -c)
 MASK=$((23+$ARVO))
 
 #scan all possible LAN IP address' and write a sorted list of identified IPs and MACs v 1.0.0
-nmap -sP $LAN/$MASK|awk '/Nmap scan report for/{printf $5;}/MAC Address:/{print " "$3;}'|sort -V > $FOLDER/result.list
+nmap -sP $LAN/$MASK|awk '/Nmap scan report for/{printf $5;}/MAC Address:/{print " "$3;}'|sort -V > $FOLDER/nmap.list
 
 #this list still miss scanner host's MAC address get the host IP and MAC and add it to correct place in the list v 1.0.1
 ownIP=$(ifconfig|grep Bcast|cut -d":" -f2|cut -d" " -f1)
 ownMAC=$(ifconfig|grep HWaddr|cut -d" " -f11)
-sed -i 's/\b'"$ownIP"'\b/&'" $ownMAC"'/' $FOLDER/result.list
+sed -i 's/\b'"$ownIP"'\b/&'" $ownMAC"'/' $FOLDER/nmap.list
