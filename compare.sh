@@ -1,31 +1,37 @@
 #!/bin/bash
-
-#version 0.0.1 1.5.2017
-
+#version 1.0.1 1.10.2017
 #alarm state set to 3, which is green
-ALARM=3
-#read every string from arp.list and compare, if it exist in cmdb
-while 
-if exist
-compare next
+ALARMSTATE=3
+#read every string from nmap.list and compare, if they exist in cmdb.list
+FOLDER="/home/pi/netskanner"
+#count the lines
+LUKU=$(wc -l $FOLDER/nmap.list|cut -d" " -f1)
 
-if not
-write to alarm.log the new string and date and list, which is arp
-#set alarm state to 0, which is red
-ALARM=0
-compare next
+#check IPs from nmap.list
+for i in $(seq 1 $LUKU)
 do
-
-#read every string from arp.list and compare, if it exist in cmdb
-while 
-if exist
-compare next
-
-if not
-write to alarm.log the new string and date and list, which is arp
-#set alarm state to 0, which is red
-ALARM=0
-compare next
+ TARGET=$(grep . $FOLDER/nmap.list | cut -d" " -f1 |head -n $i|tail -1)
+ if grep -q $TARGET $FOLDER/cmdb.list; then
+   :
+ else
+   ALARMSTATE=1
+   date >> alarm.log
+   sudo echo "false ip" $TARGET >> alarm.log
+ fi
+done
+#nmap.list MAC addresses
+for i in $(seq 1 $LUKU)
 do
+ TARGET=$(grep : $FOLDER/nmap.list | cut -d" " -f2 |head -n $i|tail -1)
+ if [ $TARGET ];then
+   if grep -q $TARGET $FOLDER/cmdb.list; then
+     :
+   else
+     ALARMSTATE=1
+     date >> alarm.log
+     sudo echo "false mac" $TARGET >> alarm.log
+   fi
+  fi
+done
 
-./lights.sh $ALARM
+exit $ALARMSTATE
