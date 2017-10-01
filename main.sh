@@ -4,9 +4,6 @@
 #set up default folder
 FOLDER="/home/pi/netskanner"
 
-#date >> scan.log
-#echo "main alkaa" >> scan.log
-
 # starting scan, lights to yellow, scan
 $FOLDER/lights.sh 2
 $FOLDER/netscanner.sh
