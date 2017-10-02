@@ -1,5 +1,5 @@
 #!/bin/bash
-#home network scan version 1.0.6, 1.10.2017 arp & nmap
+#home network scan version 1.0.6, 1.10.2017 nmap
 #defining folder V 1.0.5
 
 FOLDER="/home/pi/netskanner"
